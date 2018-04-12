@@ -47,6 +47,22 @@ var app = new Vue({
         },
         handleRemove:function (index) {
             this.list.splice(index,1);
+        },
+        test:function () {
+            setTimeout(function () {
+               console.log('timeout')
+            },0)
+            var promise = new Promise(function (resolve, reject) {
+                console.log('promise start')
+                for(let i=0;i<100;i++){
+                    i===99&&resolve()
+                }
+                console.log('promise end')
+            });
+            promise.then(function () {
+                console.log('promise then')
+            })
+            console.log('test end');
         }
     }
 })
